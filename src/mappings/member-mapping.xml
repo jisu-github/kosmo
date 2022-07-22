@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member.mapper">
+
+
+	<insert id="insertMember" parameterType="MemberVO">
+		
+		INSERT INTO MEMBER(USERID, USERPASS, USERNAME)
+		VALUES(#{userid}, #{userpass}, #{username})
+		
+	</insert>
+	
+	<update id="updateMember">
+		
+		UPDATE MEMBER SET
+		USERID = #{userid},
+		USERNAME = #{username}
+		WHERE SEQ = #{seq}
+		
+	</update>
+	
+	<delete id="deleteMember">
+		
+		DELETE MEMBER
+		WHERE SEQ = #{seq}
+		
+	</delete>
+	
+	<select id="getMember" resultType="MemberVO">
+		
+		SELECT *
+		FROM MEMBER
+		WHERE SEQ = #{seq}
+		
+	</select>
+	
+	<select id="getMemberList" resultType="MemberVO">
+		
+		SELECT *
+		FROM MEMBER
+		ORDER BY SEQ DESC
+		
+	</select>
+</mapper>
